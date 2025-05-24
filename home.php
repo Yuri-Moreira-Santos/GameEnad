@@ -63,6 +63,8 @@
                         $allowedPages = [
                             'partida',
                             'feedback',
+                            'dificuldade',
+                            'gerarProva',
                             'profile',
                         ];
                         break;

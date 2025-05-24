@@ -1,29 +1,29 @@
 <?php
-require_once("aluno/func/Php/Functions.php");
+$provaGerada = $_SESSION['prova'] ?? null;
 
-if (!isset($_SESSION['prova'])) {
-    $_SESSION['prova'] = gerarProvaAleatoria();
+if (!$provaGerada) {
+    echo "<p>Prova não encontrada. Por favor, gere a prova antes.</p>";
+    exit;
 }
-
-$provaGerada = $_SESSION['prova'];
 
 $formFoiEnviado = !empty($_POST);
 ?>
+
 <?php if (!$formFoiEnviado): ?>
 <form method="post" class="form">
     <div id="perguntas">
         <?php foreach ($provaGerada as $index => $questao): ?>
             <div class="pergunta<?= $index === 0 ? ' mostrar' : '' ?>">
-                <h2><?= $questao["titulo_enunciado$index"] ?></h2>
-                <p><?= $questao["texto_enunciado$index"] ?></p>
+                <h2><?= htmlspecialchars($questao["titulo_enunciado$index"]) ?></h2>
+                <p><?= nl2br(htmlspecialchars($questao["texto_enunciado$index"])) ?></p>
                 <?php foreach ($questao["alternativas$index"] as $altIndex => $alternativa): ?>
                     <div class="checkbox-group">
                         <input type="radio" name="alternativa<?= $index ?>"
                                id="alt<?= $index ?>_<?= $altIndex ?>"
-                               value="<?= $alternativa[0] ?>"
+                               value="<?= (int)$alternativa[0] ?>"
                                required>
                         <label for="alt<?= $index ?>_<?= $altIndex ?>">
-                            <?= chr(65 + $altIndex) ?> - <?= $alternativa[1] ?>
+                            <?= chr(65 + $altIndex) ?> - <?= htmlspecialchars($alternativa[1]) ?>
                         </label>
                     </div>
                 <?php endforeach; ?>
@@ -40,6 +40,7 @@ $formFoiEnviado = !empty($_POST);
 <?php else: ?>
     <?php include("feedback.php"); ?>
 <?php endif; ?>
+
 <script>
     const perguntas = document.querySelectorAll('.pergunta');
     const bolinhasDiv = document.getElementById('bolinhas');
@@ -76,7 +77,6 @@ $formFoiEnviado = !empty($_POST);
             btnAvancar.style.display = 'inline-block';
             btnEnviar.style.display = 'none';
         }
-
     };
 
     btnAvancar.addEventListener('click', () => {

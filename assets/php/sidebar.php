@@ -128,12 +128,12 @@
     <?php endif; ?>
     <?php if ($_SESSION['usuario']['cargo'] === 'aluno'): ?>
     <li>
-      <a href="/home.php?page=partida">
+      <a href="/home.php?page=dificuldade">
         <i class='bx bx-book-alt'></i>
         <span class="link_name">Prova</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" href="/home.php?page=partida">Prova</a></li>
+        <li><a class="link_name" href="/home.php?page=dificuldade">Prova</a></li>
       </ul>
     </li>
     <?php endif; ?>
