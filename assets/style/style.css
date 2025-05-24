@@ -461,3 +461,10 @@ p.formControl{
 .enunciado-card.mostrar {
     display: block;
 }
+
+table, th, td {
+    background: var(--transparente);
+    border: 5px solid var(--cor-tres);
+    border-collapse: collapse;
+	padding: 5px;
+}

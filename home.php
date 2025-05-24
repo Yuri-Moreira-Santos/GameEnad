@@ -53,6 +53,9 @@
                             'cadastrarQuestao',
                             'visualizarQuestao',
                             'editarQuestao',
+                            'cadastrarAlternativa',
+                            'visualizarAlternativa',
+                            'editarAlternativa',
                             'profile',
                         ];
                         break;

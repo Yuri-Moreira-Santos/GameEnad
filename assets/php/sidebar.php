@@ -110,6 +110,21 @@
         <li><a href="/home.php?page=editarQuestao">Editar Questões</a></li>
       </ul>
     </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class="bx bx-book-alt" ></i>
+          <span class="link_name">Alternativas</span>
+        </a>
+        <i class="bx bxs-chevron-down arrow"></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Alternativas</a></li>
+        <li><a href="/home.php?page=cadastrarAlternativa">Cadastrar Alternativas</a></li>
+        <li><a href="/home.php?page=visualizarAlternativa">Visualizar Alternativas</a></li>
+        <li><a href="/home.php?page=editarAlternativa">Editar Alternativas</a></li>
+      </ul>
+    </li>
     <?php endif; ?>
     <?php if ($_SESSION['usuario']['cargo'] === 'aluno'): ?>
     <li>
