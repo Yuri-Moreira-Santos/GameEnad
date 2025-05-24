@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/php/config.php');
 
-$userId  = $_SESSION['usuario']['id'] ?? null;
+$userId = $_SESSION['usuario']['id'] ?? null;
 
 // Buscar dados do usuário
 $stmt = $conn->prepare("SELECT nome, email, data_nascimento, cargo_id, foto_perfil FROM usuarios WHERE id = ?");

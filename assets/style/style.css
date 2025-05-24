@@ -333,8 +333,9 @@ p.formControl{
 	color: var(--cor-tres, #333);
 }
 .select-curso {
+	background-color: var(--transparente);
 	margin-bottom: 20px;
-	padding: 8px;
+	padding: 13px;
 	font-size: 1rem;
 	border: 2px solid var(--cor-um, #5a5aaf);
 	border-radius: 5px;
@@ -444,4 +445,19 @@ p.formControl{
     border-radius: 5px;
     border: 3px solid var(--cor-tres);
     color: var(--preto);
+}
+
+.bolinhas {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.enunciado-card {
+    display: none;
+}
+
+.enunciado-card.mostrar {
+    display: block;
 }
