@@ -124,13 +124,15 @@
     <?php endif; ?>
     <li>
       <div class="profile-details">
-        <div class="profile-content">
-          <img src="/assets/imgs/profile.jpg" alt="profileImg">
-        </div>
-        <div class="name-job">
-          <div class="profile_name"><?= htmlspecialchars($nomeExibido) ?></div>
-          <div class="job"><?= htmlspecialchars($cargo) ?></div>
-        </div>
+        <a href="/home.php?page=profile">
+          <div class="profile-content">
+            <img src="/assets/imgs/profile.jpg" alt="profileImg">
+          </div>
+          <div class="name-job">
+            <div class="profile_name"><?= htmlspecialchars($nomeExibido) ?></div>
+            <div class="job"><?= htmlspecialchars($cargo) ?></div>
+          </div>
+        </a>
         <a href="assets/func/php/logout.php"><i class="bx bx-log-out"></i></a>
       </div>
     </li>
@@ -146,7 +148,6 @@ for (var i = 0; i < arrow.length; i++) {
 }
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".bx-menu");
-console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", ()=>{
   sidebar.classList.toggle("close");
 });

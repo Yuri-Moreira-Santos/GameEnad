@@ -42,6 +42,7 @@
                             'editarProfessor',
                             'alocarDisciplina',
                             'alocarProfessor',
+                            'profile',
                         ];
                         break;
                     case 2:
@@ -52,12 +53,14 @@
                             'cadastrarQuestao',
                             'visualizarQuestao',
                             'editarQuestao',
+                            'profile',
                         ];
                         break;
                     case 1:
                         $allowedPages = [
                             'partida',
                             'feedback',
+                            'profile',
                         ];
                         break;
                     default:

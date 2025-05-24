@@ -382,3 +382,66 @@ p.formControl{
 .oculto {
 	display: none;
 }
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-photo-section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-tres);
+}
+
+.label-upload {
+    font-weight: bold;
+}
+
+.profile-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 8px;
+	background-color: var(--transparente);
+    border: 3px solid var(--cor-tres);
+    border-radius: 5px;
+}
+
+.form-group p {
+    padding: 8px;
+    background-color: var(--transparente);
+    border-radius: 5px;
+    border: 3px solid var(--cor-tres);
+    color: var(--preto);
+}
