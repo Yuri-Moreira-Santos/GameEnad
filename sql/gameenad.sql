@@ -78,7 +78,6 @@ CREATE TABLE IF NOT EXISTS alternativas (
     questao_id INT NOT NULL,
     texto VARCHAR(500) NOT NULL,
     correta BOOLEAN NOT NULL DEFAULT FALSE,
-    nivel_dificuldade ENUM('facil', 'medio', 'dificil', 'enade') NOT NULL,
     FOREIGN KEY (questao_id) REFERENCES questoes(id)
 );
 

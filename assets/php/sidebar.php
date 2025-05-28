@@ -141,7 +141,7 @@
       <div class="profile-details">
         <a href="/home.php?page=profile">
           <div class="profile-content">
-            <img src="/assets/imgs/profile.jpg" alt="profileImg">
+            <img src="<?= $fotoPerfil ?: '/assets/imgs/profile.png' ?>" alt="profileImg">
           </div>
           <div class="name-job">
             <div class="profile_name"><?= htmlspecialchars($nomeExibido) ?></div>

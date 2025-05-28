@@ -14,8 +14,9 @@ $formFoiEnviado = !empty($_POST);
     <div id="perguntas">
         <?php foreach ($provaGerada as $index => $questao): ?>
             <div class="pergunta<?= $index === 0 ? ' mostrar' : '' ?>">
-                <h2><?= htmlspecialchars($questao["titulo_enunciado$index"]) ?></h2>
+                <h1><?= htmlspecialchars($questao["titulo_enunciado$index"]) ?></h1>
                 <p><?= nl2br(htmlspecialchars($questao["texto_enunciado$index"])) ?></p>
+                <h3><?= nl2br(htmlspecialchars($questao["questao_texto"])) ?></h3>
                 <?php foreach ($questao["alternativas$index"] as $altIndex => $alternativa): ?>
                     <div class="checkbox-group">
                         <input type="radio" name="alternativa<?= $index ?>"

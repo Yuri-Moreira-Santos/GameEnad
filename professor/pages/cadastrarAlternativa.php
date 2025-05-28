@@ -26,36 +26,17 @@ while ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-// Pegar enum de nível de dificuldade da tabela alternativas
-$sql = "SHOW COLUMNS FROM alternativas LIKE 'nivel_dificuldade'";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-
-$enumStr = $row['Type'];
-preg_match("/^enum\((.*)\)$/", $enumStr, $matches);
-$enum = [];
-if (isset($matches[1])) {
-    foreach (explode(',', $matches[1]) as $value) {
-        $v = trim($value, " '");
-        $enum[] = $v;
-    }
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $questao_id = intval($_POST['questao_id'] ?? 0);
     $texto = trim($_POST['texto'] ?? '');
-    $dificuldade_index = intval($_POST['nivel_dificuldade'] ?? -1);
     $correta = isset($_POST['correta']) ? 1 : 0;
 
-    // Validações
-    if ($questao_id === 0 || empty($texto) || !isset($enum[$dificuldade_index])) {
+    if ($questao_id === 0 || empty($texto)) {
         echo "<script>alert('Preencha todos os campos corretamente.');</script>";
     } else {
-        $dificuldade = $enum[$dificuldade_index];
-
-        $sql = "INSERT INTO alternativas (questao_id, texto, correta, nivel_dificuldade) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO alternativas (questao_id, texto, correta) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("isis", $questao_id, $texto, $correta, $dificuldade);
+        $stmt->bind_param("isi", $questao_id, $texto, $correta);
 
         if ($stmt->execute()) {
             echo "<script>alert('Alternativa cadastrada com sucesso!'); window.location.href='?page=cadastrarAlternativa';</script>";
@@ -71,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Cadastro de Alternativas</h2>
     <form method="post">
         <div class="formGroup">
-            <h4 for="questao_id">Selecione a Questão:</h4>
-            <select class="select-curso" name="questao_id" id="questao_id" required>
+            <h4>Selecione a Questão:</h4>
+            <select class="select-curso" name="questao_id" required>
                 <option value="">Selecione</option>
                 <?php foreach ($questoes as $questao): ?>
                     <option value="<?= htmlspecialchars($questao['id']) ?>">
@@ -85,18 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="formGroup">
-            <span class="inputForm" for="texto">Texto da Alternativa:</span>
-            <input class="formControl" type="text" id="texto" name="texto" maxlength="500" required>
-        </div>
-
-        <div class="formGroup">
-            <span style="height: 100%;" class="inputForm" for="nivel_dificuldade">Nível de dificuldade:</span>
-            <select class="select-curso" name="nivel_dificuldade" id="nivel_dificuldade" required>
-                <option>Selecione</option>
-                <?php foreach ($enum as $index => $label): ?>
-                    <option value="<?= $index ?>"><?= htmlspecialchars($label) ?></option>
-                <?php endforeach; ?>
-            </select>
+            <span class="inputForm">Texto da Alternativa:</span>
+            <input class="formControl" type="text" name="texto" maxlength="500" required>
         </div>
 
         <div class="formGroup">

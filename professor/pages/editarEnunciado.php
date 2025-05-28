@@ -161,14 +161,7 @@ if (isset($_GET['disciplina_id']) && $_GET['disciplina_id'] != '') {
         atualizarTela();
     };
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
-            avancar();
-        }
-        if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
-            voltar();
-        }
-    });
+    
 
     atualizarTela();
 </script>

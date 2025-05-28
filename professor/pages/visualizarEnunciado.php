@@ -9,90 +9,74 @@ if (!isset($_SESSION['logged']) || $_SESSION['usuario']['tipo'] != 2) {
 $userId = $_SESSION['usuario']['id'] ?? null;
 
 // Buscar enunciados do professor com nome da disciplina
-$sql = "
-    SELECT e.id, e.titulo, d.nome AS disciplina_nome
-    FROM enunciados e
-    INNER JOIN disciplinas d ON e.disciplina_id = d.id
-    INNER JOIN alocacoes a ON d.id = a.disciplina_id
-    WHERE a.professor_id = ?
-";
+$sql = "SELECT d.id, d.nome 
+        FROM disciplinas d
+        INNER JOIN alocacoes a ON d.id = a.disciplina_id
+        WHERE a.professor_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$enunciados = [];
+$disciplinas = [];
 while ($row = $result->fetch_assoc()) {
-    $enunciados[] = $row;
+    $disciplinas[] = $row;
 }
 $stmt->close();
 
-// Buscar questões do enunciado selecionado
-$questoes = [];
+$enunciados = [];
 
-if (isset($_GET['enunciado_id']) && $_GET['enunciado_id'] != '') {
-    $enunciado_id = intval($_GET['enunciado_id']);
+if (isset($_GET['disciplina_id']) && $_GET['disciplina_id'] != '') {
+    $disciplina_id = intval($_GET['disciplina_id']);
 
-    $sql = "
-        SELECT q.id, q.pergunta, q.dificuldade
-        FROM questoes q
-        WHERE q.enunciado_id = ?
-    ";
+    // Buscar os enunciados dessa disciplina
+    $sql = "SELECT id, titulo, texto FROM enunciados WHERE disciplina_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $enunciado_id);
+    $stmt->bind_param("i", $disciplina_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
-        $questoes[] = $row;
+        $enunciados[] = $row;
     }
     $stmt->close();
 }
 ?>
 <div class="form" style="max-width: 45vw;">
-    <h2>Visualizar Questões</h2>
+    <h2>Visualizar Enunciados</h2>
 
     <form method="get">
-        <input type="hidden" name="page" value="visualizarQuestao">
+        <input type="hidden" name="page" value="visualizarEnunciado">
         <div class="formGroup">
-            <h4>Selecione o Enunciado:</h4>
-            <select class="select-curso" name="enunciado_id" onchange="this.form.submit()" required>
+            <h4>Selecione a Disciplina:</h4>
+            <select class="select-curso" name="disciplina_id" onchange="this.form.submit()" required>
                 <option value="">Selecione</option>
-                <?php foreach ($enunciados as $enunciado): ?>
-                    <option value="<?= htmlspecialchars($enunciado['id']) ?>"
-                        <?= (isset($_GET['enunciado_id']) && $_GET['enunciado_id'] == $enunciado['id']) ? 'selected' : '' ?>>
-                        (<?= htmlspecialchars($enunciado['disciplina_nome']) ?>) <?= htmlspecialchars($enunciado['titulo']) ?>
+                <?php foreach ($disciplinas as $disciplina): ?>
+                    <option value="<?= htmlspecialchars($disciplina['id']) ?>"
+                        <?= (isset($_GET['disciplina_id']) && $_GET['disciplina_id'] == $disciplina['id']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($disciplina['nome']) ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
     </form>
 
-    <?php if ($questoes): ?>
+    <?php if ($enunciados): ?>
         <div class="enunciados">
-            <?php foreach ($questoes as $idx => $questao): ?>
+            <?php foreach ($enunciados as $idx => $enunciado): ?>
                 <div class="enunciado-card">
                     <div class="inputForm">
-                        <h3 style="color: var(--preto);"><?= htmlspecialchars($questao['pergunta']) ?></h3>
+                        <h3 style="color: var(--preto);"><?= htmlspecialchars($enunciado['titulo']) ?></h3>
                     </div>
                     <div class="formControl" style="border-top: 1px solid var(--branco); border-left: none;">
-                        <p style="color: var(--preto);">
-                            <strong>Dificuldade:</strong>
-                            <?= match($questao['dificuldade']) {
-                                '0' => 'Fácil',
-                                '1' => 'Médio',
-                                '2' => 'Difícil',
-                                '3' => 'Oficial do INEP',
-                                default => 'Desconhecido',
-                            }; ?>
-                        </p>
+                        <p style="color: var(--preto);"><?= nl2br(htmlspecialchars($enunciado['texto'])) ?></p>
                     </div>
                     <div class="bolinhas"></div>
                 </div>
             <?php endforeach; ?>
         </div>
-    <?php elseif (isset($_GET['enunciado_id'])): ?>
-        <p>Nenhuma questão cadastrada para esse enunciado.</p>
+    <?php elseif (isset($_GET['disciplina_id'])): ?>
+        <p>Nenhum enunciado cadastrado para essa disciplina.</p>
     <?php endif; ?>
 </div>
 <script>
@@ -136,15 +120,6 @@ if (isset($_GET['enunciado_id']) && $_GET['enunciado_id'] != '') {
         atual = (atual - 1 + enunciados.length) % enunciados.length;
         atualizarTela();
     };
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
-            avancar();
-        }
-        if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
-            voltar();
-        }
-    });
 
     atualizarTela();
 </script>

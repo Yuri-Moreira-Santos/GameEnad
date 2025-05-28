@@ -2,7 +2,7 @@
     session_start();
     require_once('assets/php/config.php');
 
-    if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true || !isset($_SESSION['usuario']['tipo'])) {
+    if (!isset($_SESSION['logged']) || !isset($_SESSION['usuario']) || $_SESSION['logged'] !== true || !isset($_SESSION['usuario']['tipo'])) {
         header('Location: /login.php');
         exit;
     }

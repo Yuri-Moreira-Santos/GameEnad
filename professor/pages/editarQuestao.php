@@ -193,14 +193,7 @@ if (isset($_GET['enunciado_id']) && $_GET['enunciado_id'] != '') {
         atualizarTela();
     };
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
-            avancar();
-        }
-        if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
-            voltar();
-        }
-    });
+    
 
     atualizarTela();
 </script>

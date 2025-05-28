@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/php/config.php');
 
 $userId = $_SESSION['usuario']['id'] ?? null;
 
-// Buscar questões do professor para filtro
+// Buscar questões do professor
 $sql = "SELECT q.id, q.texto as questao_texto, e.titulo as enunciado_titulo, d.nome as disciplina_nome
         FROM questoes q
         INNER JOIN enunciados e ON q.enunciado_id = e.id
@@ -25,7 +25,7 @@ $alternativas = [];
 $questaoFiltro = $_GET['questao_id'] ?? '';
 
 if ($questaoFiltro != '') {
-    $sql = "SELECT id, texto, correta, nivel_dificuldade FROM alternativas WHERE questao_id = ?";
+    $sql = "SELECT id, texto, correta FROM alternativas WHERE questao_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $questaoFiltro);
     $stmt->execute();
@@ -47,8 +47,7 @@ if ($questaoFiltro != '') {
         <select class="select-curso" name="questao_id" onchange="this.form.submit()">
             <option value="">Selecione</option>
             <?php foreach ($questoes as $questao): ?>
-                <option value="<?= htmlspecialchars($questao['id']) ?>"
-                    <?= ($questaoFiltro == $questao['id']) ? 'selected' : '' ?>>
+                <option value="<?= htmlspecialchars($questao['id']) ?>" <?= ($questaoFiltro == $questao['id']) ? 'selected' : '' ?>>
                     (<?= htmlspecialchars($questao['disciplina_nome']) ?>) <?= 
                     htmlspecialchars(mb_strimwidth($questao['enunciado_titulo'], 0, 10, '...')) ?> - <?= 
                     htmlspecialchars(mb_strimwidth($questao['questao_texto'], 0, 10, '...')) ?>
@@ -64,7 +63,6 @@ if ($questaoFiltro != '') {
                     <tr>
                         <th>Texto</th>
                         <th>Correta</th>
-                        <th>Nível de dificuldade</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +70,6 @@ if ($questaoFiltro != '') {
                         <tr>
                             <td><?= htmlspecialchars($alt['texto']) ?></td>
                             <td><?= $alt['correta'] ? 'Sim' : 'Não' ?></td>
-                            <td><?= htmlspecialchars($alt['nivel_dificuldade']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtUp->execute();
     $stmtUp->close();
 
-    echo "<script>alert('Dados atualizados com sucesso!'); window.location.href='profile.php';</script>";
+    echo "<script>alert('Dados atualizados com sucesso!'); window.location.href='home.php';</script>";
     exit;
 }
 ?>
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST" enctype="multipart/form-data">
         <div class="profile-content">
             <div class="profile-photo-section">
-                <img src="<?= $fotoPerfil ?: '/assets/imgs/profile.jpg' ?>" alt="Foto de perfil">
+                <img src="<?= $fotoPerfil ?: '/assets/imgs/profile.png' ?>" alt="Foto de perfil">
                 <label class="label-upload">Alterar Foto:</label>
                 <input type="file" name="foto" accept="image/*">
             </div>
@@ -60,17 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="form-group">
                     <label>Email:</label>
-                    <p><?= htmlspecialchars($email) ?></p>
+                    <p style="background: #a9a9a9;"><?= htmlspecialchars($email) ?></p>
                 </div>
 
                 <div class="form-group">
                     <label>Data de Nascimento:</label>
-                    <p><?= htmlspecialchars(date('d/m/Y', strtotime($nascimento))) ?></p>
+                    <p style="background: #a9a9a9;"><?= htmlspecialchars(date('d/m/Y', strtotime($nascimento))) ?></p>
                 </div>
 
                 <div class="form-group">
                     <label>Cargo:</label>
-                    <p><?= htmlspecialchars($cargo) ?></p>
+                    <p style="background: #a9a9a9;"><?= htmlspecialchars($cargo) ?></p>
                 </div>
         <button class="btn" type="submit">Salvar Alterações</button>
     </form>
