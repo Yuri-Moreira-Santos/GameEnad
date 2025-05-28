@@ -13,12 +13,14 @@ INSERT IGNORE INTO cargo (nome) VALUES ('aluno'), ('professor'), ('coordenador')
 -- Criar tabela unificada de usuários
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    cargo_id INT NOT NULL,
     foto_perfil VARCHAR(255),
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     data_nascimento date NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    cargo_id INT NOT NULL,
+    reset_token VARCHAR(255) NULL,
+    reset_token_expira DATETIME NULL,
     FOREIGN KEY (cargo_id) REFERENCES cargo(id)
 );
 
