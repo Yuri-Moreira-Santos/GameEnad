@@ -38,15 +38,15 @@ desgastados e com problemas de saúde.
 (4, 3, 'Diante do corte de orçamento, qual a decisão mais estratégica?', 'dificil'),
 (5, 3, 'Selecione as alternativas corretas sobre impacto social...', 'facil');
 
-INSERT INTO alternativas (questao_id, texto, correta, nivel_dificuldade) VALUES
-(1, 'As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I.', 0, 'enade'),
-(1, 'As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I.', 1, 'enade'),
-(1, 'A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.', 0, 'enade'),
-(2, 'A pandemia impactou principalmente populações vulneráveis como negros e latinos.', 1, 'enade'),
-(2, 'A pandemia não afetou diferenças étnicas.', 0, 'enade'),
-(3, 'Democracia é o governo do povo, feito para o povo e pelo povo.', 1, 'medio'),
-(3, 'Democracia é o regime onde há um só líder com poder supremo.', 0, 'medio'),
-(4, 'Negociar com a diretoria os requisitos que podem ser cortados.', 1, 'dificil'),
-(4, 'Cortar 25% de todas as tarefas independentemente da relevância.', 0, 'dificil'),
-(5, 'A crise sanitária aumentou a desigualdade social.', 1, 'facil'),
-(5, 'A crise reduziu oportunidades em geral, sem afetar os mais pobres.', 0, 'facil');
+INSERT INTO alternativas (questao_id, texto, correta) VALUES
+(1, 'As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I.', 0),
+(1, 'As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I.', 1),
+(1, 'A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.', 0),
+(2, 'A pandemia impactou principalmente populações vulneráveis como negros e latinos.', 1),
+(2, 'A pandemia não afetou diferenças étnicas.', 0),
+(3, 'Democracia é o governo do povo, feito para o povo e pelo povo.', 1),
+(3, 'Democracia é o regime onde há um só líder com poder supremo.', 0),
+(4, 'Negociar com a diretoria os requisitos que podem ser cortados.', 1),
+(4, 'Cortar 25% de todas as tarefas independentemente da relevância.', 0),
+(5, 'A crise sanitária aumentou a desigualdade social.', 1),
+(5, 'A crise reduziu oportunidades em geral, sem afetar os mais pobres.', 0);
