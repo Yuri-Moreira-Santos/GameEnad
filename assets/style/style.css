@@ -48,6 +48,17 @@ section h2{
 	color: var(--preto);
 }
 
+table, th, td {
+    background: var(--transparente);
+    border: 5px solid var(--cor-tres);
+    border-collapse: collapse;
+	padding: 5px;
+}
+
+div button.btn {
+    width: auto;
+}
+
 .spaceBtw, .spaceArd, .gap{
 	display: flex;
 	align-items: center;
@@ -143,10 +154,6 @@ section h2{
   	background: none;
 }
 
-div button.btn {
-    width: auto;
-}
-
 .bottom{
 	position: absolute;
 	bottom: 1vh;
@@ -233,12 +240,12 @@ div button.btn {
 	color: var(--cor-dois);
 }
 
-.erro{
+.erro, .resposta-errada{
 	color: var(--erro);
 }
 
-.certo{
-	color: green;
+.certo, .resposta-correta{
+	color: var(--acerto);
 }
 
 .final{
@@ -313,14 +320,6 @@ p.formControl{
 
 .pergunta.mostrar {
     display: flex;
-}
-
-.resposta-correta {
-	color: var(--acerto);
-}
-
-.resposta-errada {
-	color: var(--erro);
 }
 
 .container-principal {
@@ -457,11 +456,4 @@ p.formControl{
 
 .enunciado-card.mostrar {
     display: block;
-}
-
-table, th, td {
-    background: var(--transparente);
-    border: 5px solid var(--cor-tres);
-    border-collapse: collapse;
-	padding: 5px;
 }

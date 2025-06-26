@@ -23,7 +23,10 @@
         require_once('assets/php/sidebar.php')
     ?>
     <?php
-        require('assets/php/vlibras.php')
+        require_once('assets/php/vlibras.php')
+    ?>
+    <?php
+        require_once('assets/php/acessibility.php')
     ?>
     <section class="home-section">
         <div class="home-content">
