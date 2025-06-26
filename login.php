@@ -12,6 +12,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/php/config.php');
     <title>Login Coordenador</title>
 </head>
 <body>
+    <?php
+        require('assets/php/vlibras.php')
+    ?>
     <header>
         <?php
             require($_SERVER['DOCUMENT_ROOT'] . '/assets/php/navBar.php')

@@ -98,22 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="erro"><?= htmlspecialchars($erro) ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <div class="formGroup">
-                <input type="checkbox" name="termos" <?= isset($validarTermos) && $validarTermos ? 'checked' : '' ?>>
-                <span for="termos">Concordo com os
-                    <a href="#" class="link">termos de uso e privacidade</a>
-                </span>
-            </div>
-            <?php if (!empty($erros['termos'])): ?>
-                <div class="erro"><?= $erros['termos'] ?></div>
-            <?php endif; ?>
             <div class="final">
                 <button type="submit" class="btn">Cadastrar</button>
             </div>
         </section>
-        <div class="register">
-            <span>Já possui conta?</span>
-            <a class="link" href="login.php">Entrar</a>
-        </div>
     </form>
 </div>

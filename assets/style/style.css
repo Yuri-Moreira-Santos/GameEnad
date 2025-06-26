@@ -8,6 +8,7 @@
 	--cor-tres: #3D365C;
 	--cor-quatro: #F8B55F;
 	--transparente: #ffffff70;
+	--acerto: #09ff00;
 	--erro: #ff0000;
 }
 
@@ -315,11 +316,11 @@ p.formControl{
 }
 
 .resposta-correta {
-	color: green;
+	color: var(--acerto);
 }
 
 .resposta-errada {
-	color: red;
+	color: var(--erro);
 }
 
 .container-principal {
@@ -343,7 +344,7 @@ p.formControl{
 }
 .lista {
 	flex: 1;
-	background: white;
+	background: var(--branco);
 	border: 2px solid var(--cor-um, #5a5aaf);
 	border-radius: 8px;
 	padding: 15px;
@@ -351,9 +352,9 @@ p.formControl{
 }
 .lista-titulo {
 	margin-top: 0;
-	border-bottom: 2px solid var(--cor-dois, #8a8ae0);
+	border-bottom: 2px solid var(--cor-dois);
 	padding-bottom: 8px;
-	color: var(--cor-um, #5a5aaf);
+	color: var(--cor-um);
 	font-size: 1.2rem;
 }
 .lista-ul {
@@ -362,19 +363,19 @@ p.formControl{
 	margin: 0;
 }
 .lista-item {
-	background: var(--cor-quatro, #ddd);
+	background: var(--cor-quatro);
 	margin-bottom: 10px;
 	padding: 10px;
 	border-radius: 6px;
 	cursor: pointer;
-	color: var(--cor-tres, #333);
+	color: var(--cor-tres);
 	font-weight: bold;
 	user-select: none;
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 .lista-item:hover {
-	background: var(--cor-dois, #8a8ae0);
-	color: white;
+	background: var(--cor-dois);
+	color: var(--branco);
 }
 .oculto {
 	display: none;

@@ -1,0 +1,17 @@
+v-libras - feito
+editar cadastro de professor, remover termos e entrar - feito
+api de cor pra daltonico - falar com ceres, aguardando retorno
+menu para remover musica ou mexer no volume, musica durante partida
+fazer turma
+professor poder escolher turma para passar prova, ser opção no sidebar
+melhorar os selects dos menu para visualizar todo o conteudo(hover ou tooltip)
+permitir escolher numero de questoes nas provas, com range para valor entre 5 a 30
+add tempo por questão/ prova toda, professor escolhar o tempo da prova
+conquistas no perfil do aluno
+ranking somente contabilizar difuldade enade
+aluno ter historico das partidas, com valor de acertos
+juntar na mesma tela form de questoes e enunciados
+mudar no visualizar para fixar a frase no topo-centro
+fluxo de exclusão de alunos
+fluxo de multiplayer
+add dark mode
