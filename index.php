@@ -11,6 +11,9 @@
 	<title>Game-Enad</title>
 </head>
 <body>
+    <?php
+        require('assets/php/vlibras.php')
+    ?>
     <header>
         <?php
             require('assets/php/navBar.php')

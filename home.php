@@ -22,6 +22,9 @@
     <?php
         require_once('assets/php/sidebar.php')
     ?>
+    <?php
+        require('assets/php/vlibras.php')
+    ?>
     <section class="home-section">
         <div class="home-content">
             <?php

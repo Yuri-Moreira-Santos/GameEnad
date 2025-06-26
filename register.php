@@ -109,6 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
+    <?php
+        require('assets/php/vlibras.php')
+    ?>
     <header>
         <?php
             require($_SERVER['DOCUMENT_ROOT'] . '/assets/php/navBar.php')
