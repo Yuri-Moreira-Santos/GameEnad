@@ -1,9 +1,9 @@
 <?php
 	// Configurações de conexão ao banco de dados
-	$host = 'localhost'; // Host do banco de dados, geralmente 'localhost'
-	$username = 'root'; // Usuário do banco de dados
-	$password = ''; // Senha do banco de dados
+	$host = 'db'; // Host do banco de dados, geralmente 'localhost'
 	$database = 'gameenad'; // Nome do banco de dados
+	$username = 'yuhsv'; // Usuário do banco de dados
+	$password = 'YuhSvUwU1#'; // Senha do banco de dados
 
 	// Estabelecendo a conexão
 	$conn = new mysqli($host, $username, $password, $database);
