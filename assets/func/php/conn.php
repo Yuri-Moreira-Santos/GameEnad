@@ -2,7 +2,7 @@
 	// Configurações de conexão ao banco de dados
 	$host = '192.168.15.199'; // Host do banco de dados, geralmente 'localhost'
 	$database = 'gameenad'; // Nome do banco de dados
-	$username = 'yuhsv'; // Usuário do banco de dados
+	$username = 'yuhdba'; // Usuário do banco de dados
 	$password = 'IsawD4t$'; // Senha do banco de dados
 
 	// Estabelecendo a conexão
