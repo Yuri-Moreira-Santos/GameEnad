@@ -3,7 +3,7 @@
 	$host = 'db'; // Host do banco de dados, geralmente 'localhost'
 	$database = 'gameenad'; // Nome do banco de dados
 	$username = 'yuhsv'; // Usuário do banco de dados
-	$password = 'YuhSvUwU1#'; // Senha do banco de dados
+	$password = 'IsawD4t$'; // Senha do banco de dados
 
 	// Estabelecendo a conexão
 	$conn = new mysqli($host, $username, $password, $database);
